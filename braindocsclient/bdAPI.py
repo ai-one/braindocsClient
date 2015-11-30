@@ -43,7 +43,6 @@ class BraindocsApi(object):
         return agents
 
     def createLibrary(self, libraryContent):
-        # WARN(erh): This doesn't seem to be working
         """
         libraryContent = {
             "name":"Name of new library",
@@ -62,5 +61,5 @@ class BraindocsApi(object):
             ]
         }
         """
-        r = self.session.post(self.baseURL + '/library', data=libraryContent, verify=False)
+        r = self.session.post(self.baseURL + '/library', json=libraryContent, verify=False)
         return r.json()
