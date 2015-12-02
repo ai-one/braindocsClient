@@ -42,6 +42,20 @@ class BraindocsApi(object):
         agents = r.json()
         return agents
 
+    def doSimilarityAnalysis(self, analysisConfig):
+        """
+        {
+            "agentIds": ["agentId1", "agentId2", ...],
+            "libraryId": "libraryId",
+            "name": "Name of new similarity analysis",
+            "handleWindow": 0 or 1
+        }
+        """
+        r = self.session.post(self.baseURL + '/doSimilarityAnalysis', json=analysisConfig, verify=False)
+        return r.json()
+
+    #def analyze(self,agentId)
+
     def createLibrary(self, libraryContent):
         """
         libraryContent = {
@@ -61,5 +75,6 @@ class BraindocsApi(object):
             ]
         }
         """
+        print libraryContent
         r = self.session.post(self.baseURL + '/library', json=libraryContent, verify=False)
         return r.json()
